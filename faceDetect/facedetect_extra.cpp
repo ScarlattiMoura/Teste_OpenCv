@@ -128,7 +128,15 @@ void detectAndDraw( Mat& frame, CascadeClassifier& cascade, double scale, bool t
         Size(40, 40) );
         
     // Desenha uma imagem
-    Mat img = imread("orange.png", IMREAD_UNCHANGED), img2;
+        static int indSprite = 0;
+        indSprite ++;
+        if (indSprite>17){
+            indSprite=0;
+        }
+        char nomeImg[200];
+
+    sprintf(nomeImg, "Walking/Golem_01_Walking_0%02d.png",indSprite);
+    Mat img = imread(nomeImg, IMREAD_UNCHANGED), img2;
     printf("img::width: %d, height=%d\n", img.cols, img.rows );
     if (img.rows > 200 || img.cols > 200)
         resize( img, img, Size(200, 200));
